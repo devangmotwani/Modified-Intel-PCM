@@ -1,0 +1,2 @@
+mem_size,mem_freq,channels,cpu_freq,exe_time,IPC,L3_hit,L2_hit,C0_residency,CPU_Energy,DRAM_Energy,EDP(k),CPU_watt,DRAM_watt,BW
+
