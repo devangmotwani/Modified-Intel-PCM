@@ -482,10 +482,10 @@ int main(int argc, char * argv[])
          //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
 
          /*Activate this for running on VM*/
-	 execl("/bin/su", "hoseinmmm", "-c", "ssh hduser@192.168.56.101 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL); 
+	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL); 
 
 	 /*Activate this for running on Server Machine*/
-	 //execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
+	 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
 	 _exit(1);
          }
          else if (pid > 0)
