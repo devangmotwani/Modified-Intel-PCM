@@ -2,7 +2,7 @@
 // written by Hosein Mohammadi Makrani
 //            George Mason University
 
-
+// Modified and updated by Devang Motwani
 
 /*!     
 \implementation of a simple performance counter monitoring utility
@@ -32,7 +32,7 @@
 #include "utils.h"
 
 
-/*Edited by Devang*/
+/*Modified by Devang*/
 #include<cstdlib>
 #include<sys/wait.h>
 #include<sys/types.h>
@@ -466,52 +466,45 @@ int main(int argc, char * argv[])
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------	
 //						Open report
-		myfile.open("hibench.csv",fstream::app);
+		 myfile.open("hibench.csv",fstream::app);
 //						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
+		 system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //----------------------------------------------------------------
 //						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-/*Edit by Devang*/
-	 //pid_t pid,pid_result;
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
+		 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 
-         /*Activate this for running on VM*/
-	 execl("/bin/su", "hoseinmmm", "-c", "ssh hduser@192.168.56.101 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL); 
+		 /*Modified by Devang*/
+		 //pid_t pid,pid_result;
+		 pid= fork();
+		 if (pid==0)
+		 {
+		 cout<<"This is child process";
 
-	 /*Activate this for running on Server Machine*/
-	 //execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-//	         std::cout<<"Pid of the the script invoked on other system = "<<pid<<"\n";
-	 
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-//---------------------------------------------------------------
-//						Reading states and time after running
-/*
-while(pid_status==300){
-	std::cout<<"Waiting for the child to exit\n";
-}*/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
+		 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
 
-	for(count=0; pid_status<0 ; count++) {
+		 //Activate this for running on VM/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh hduser@192.168.56.101 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL); 
+
+		 //Activate this for running on Server Machine/
+		 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
+		
+		 //For the above server configuration to run, make sure to configure password-less ssh./
+
+		 _exit(1);
+		 }
+		 else if (pid > 0)
+		 {
+		 }
+		 
+	 	 //system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
+
+		for(count=0; pid_status<0 ; count++) {
 	
 //---------------------------------------------------------------
 //                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
+    		
+		m->getAllCounterStates(sstate1, sktstate1, cstates1);
 	    	BeforeTime = m->getTickCount();
  		for(uint32 i=0; i<m->getNumSockets(); ++i)
 	        BeforeState[i] = m->getServerUncorePowerState(i); 
@@ -521,16 +514,22 @@ while(pid_status==300){
         		MySystem(sysCmd, sysArgv);
 		}
 
-		/*-----Delay-----*/
-		MySleepMs(DELAY);
-		/*-----Delay-----*/
+//---------------------------------------------------------------
+//			1000 ms Delay
 
-	
+		//-----Delay-----/
+		MySleepMs(DELAY);
+		//-----Delay-----/
+
+
 		pid_result=waitpid(pid,&pid_status,WNOHANG);
 		std::cout<<"This loop is running with current count: "<<count<<"\n";
 		std::cout<<"Status of Child: "<< pid_status;
 		std::cout<<"Return value of WAITPID:"<<pid_result;
 	
+//---------------------------------------------------------------
+//			Reading states and time after running
+
 		m->getAllCounterStates(sstate2, sktstate2, cstates2);
 		AfterTime = m->getTickCount();
 		for(uint32 i=0; i<m->getNumSockets(); ++i)
@@ -540,7 +539,7 @@ while(pid_status==300){
 		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
 //---------------------------------------------------------------
 //					Writing information to report
-/*Edit by Devang*/
+
 		myfile << "wordcount," << "hadoop," << memcap<<","<<memfrq<<","<<memch;
 		if(fr==0){
 			myfile <<",2.6";}
@@ -554,19 +553,20 @@ while(pid_status==300){
 		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
 		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
 		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
+
 //                                   pcm-memory to calculate BW
 
 		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
 		myfile <<","<<mbw<< "\n";
 
-	}
+		}
 
-	pid_status = -100; /*To re-initialize value for the next application*/
+		pid_status = -100; /*To re-initialize value for the next application*/
 
 //---------------------------------------------------------------
 //						Closing report
 
-	myfile.close();
+		myfile.close();
 //						Clear DRAM
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 
@@ -575,7 +575,8 @@ while(pid_status==300){
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
 
-/*----------Commenting starts
+
+
 		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -589,36 +590,31 @@ while(pid_status==300){
 //---------------------------------------------------------------
 //----------------------------------------------------------------
 //						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-// system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh");
-	 //pid_t pid,pid_result;
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
 
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh", NULL);
-         //Activate this for running on VM/
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh", NULL);
-         
-	 //Activate this for running on Server Machine/
-         execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh", NULL);
+	 // system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh");
 
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
+		 pid= fork();
+		 if (pid==0)
+		 {
+		 cout<<"This is child process";
+
+		 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh", NULL);
+		 //Activate this for running on VM/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh", NULL);
+		 
+		 //Activate this for running on Server Machine/
+		 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/spark/run.sh", NULL);
+
+		 _exit(1);
+		 }
+		 else if (pid > 0)
+		 {
+		 }
+
+
+		for(count=0; pid_status<0 ; count++) {
 
 //---------------------------------------------------------------
-//						Reading states and time after running
-	for(count=0; pid_status<0 ; count++) {
-
 //                     Reading states and time befor running
     		m->getAllCounterStates(sstate1, sktstate1, cstates1);
 	    	BeforeTime = m->getTickCount();
@@ -629,6 +625,10 @@ while(pid_status==300){
 		{
         		MySystem(sysCmd, sysArgv);
 		}	
+
+//---------------------------------------------------------------
+//			1000 ms Delay
+
 		//-----Delay-----//
 		MySleepMs(DELAY);
 		//-----Delay-----//
@@ -637,6 +637,9 @@ while(pid_status==300){
 		std::cout<<"This loop is running with current count: "<<count<<"\n";
 		std::cout<<"Status of Child: "<< pid_status;
 		std::cout<<"Return value of WAITPID:"<<pid_result;
+
+//---------------------------------------------------------------
+//			Reading states and time after running
 
 		m->getAllCounterStates(sstate2, sktstate2, cstates2);
 		AfterTime = m->getTickCount();
@@ -665,14 +668,14 @@ while(pid_status==300){
 		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
 		myfile <<","<<mbw<< "\n";
 
-	}
+		}
 
-pid_status = -100; //To re-initialize value for the next application/
+		pid_status = -100; //To re-initialize value for the next application/
 
 //---------------------------------------------------------------
 //						Closing report
 
-	myfile.close();
+		myfile.close();
 //						Clear DRAM
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //-----------------------------------------------------------------
@@ -686,44 +689,39 @@ pid_status = -100; //To re-initialize value for the next application/
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------	
 //						Open report
-		myfile.open("hibench.csv",fstream::app);
+		 myfile.open("hibench.csv",fstream::app);
 //						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
+		 system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //---------------------------------------------------------------
 	
 //----------------------------------------------------------------
 //						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-// system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh");
-	 //pid_t pid,pid_result;
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
+	 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
+	 // system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh");
+	 
+		 pid= fork();
+		 if (pid==0)
+		 {
+		 cout<<"This is child process";
 
-	 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh", NULL);
-	 //Activate this for running on VM/
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh", NULL);    
-         
-	 //Activate this for running on Server Machine/
-         execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh", NULL);
+		 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh", NULL);
+		 //Activate this for running on VM/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh", NULL);    
+		 
+		 //Activate this for running on Server Machine/
+		 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/hadoop/run.sh", NULL);
 
-         _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
+		 _exit(1);
+		 }
+		 else if (pid > 0)
+		 {
+		 }
 //----------------------------------------------------------------
 //						Reading states and time after running
 
-	for(count=0; pid_status<0 ; count++) {
+		for(count=0; pid_status<0 ; count++) {
 
-
+//----------------------------------------------------------------
 //                     Reading states and time befor running
     		m->getAllCounterStates(sstate1, sktstate1, cstates1);
 	    	BeforeTime = m->getTickCount();
@@ -734,7 +732,10 @@ pid_status = -100; //To re-initialize value for the next application/
 		{
 	        MySystem(sysCmd, sysArgv);
 		}
-		
+
+//---------------------------------------------------------------
+//			1000 ms Delay
+
 		//-----Delay-----/
                 MySleepMs(DELAY);
                 //-----Delay-----/
@@ -744,10 +745,13 @@ pid_status = -100; //To re-initialize value for the next application/
 		std::cout<<"Status of Child: "<< pid_status;
 		std::cout<<"Return value of WAITPID:"<<pid_result;
 
+//----------------------------------------------------------------
+//			Reading states and time after running
 		m->getAllCounterStates(sstate2, sktstate2, cstates2);
 		AfterTime = m->getTickCount();
 		for(uint32 i=0; i<m->getNumSockets(); ++i)
 	            AfterState[i] = m->getServerUncorePowerState(i);
+
 //---------------------------------------------------------------
 //						Remove output file	
 //system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
@@ -771,13 +775,13 @@ pid_status = -100; //To re-initialize value for the next application/
 		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
 		myfile <<","<<mbw<< "\n";
 
-	}
+		}
 
-pid_status = -100; //To re-initialize value for the next application/
+		pid_status = -100; //To re-initialize value for the next application/
 //---------------------------------------------------------------
 //						Closing report
 
-	myfile.close();
+		myfile.close();
 //						Clear DRAM
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //-----------------------------------------------------------------
@@ -792,9 +796,9 @@ pid_status = -100; //To re-initialize value for the next application/
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------	
 //						Open report
-		myfile.open("hibench.csv",fstream::app);
+		 myfile.open("hibench.csv",fstream::app);
 //						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
+		 system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //---------------------------------------------------------------
 	
 //----------------------------------------------------------------
@@ -802,34 +806,29 @@ pid_status = -100; //To re-initialize value for the next application/
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 // system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh");
 
-	 //pid_t pid,pid_result;
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
 
-	 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh", NULL);
-	 //Activate this for running on VM/
-         //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh", NULL); 
-         
-	 //Activate this for running on Server Machine/
-         execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh", NULL);
+		 pid= fork();
+		 if (pid==0)
+		 {
+		 cout<<"This is child process";
 
-         _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
+		 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh", NULL);
+		 //Activate this for running on VM/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh", NULL); 
+		 
+		 //Activate this for running on Server Machine/
+		 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/sort/spark/run.sh", NULL);
+
+		 _exit(1);
+		 }
+		 else if (pid > 0)
+		 {
+		 }
+
+
+		for(count=0; pid_status<0 ; count++) {
 
 //---------------------------------------------------------------
-//						Reading states and time after running
-	for(count=0; pid_status<0 ; count++) {
-	
 //                     Reading states and time befor running
 		m->getAllCounterStates(sstate1, sktstate1, cstates1);
 		BeforeTime = m->getTickCount();
@@ -841,14 +840,21 @@ pid_status = -100; //To re-initialize value for the next application/
 	        MySystem(sysCmd, sysArgv);
 		}
 
+//---------------------------------------------------------------
+//			1000 ms Delay
+
 		//-----Delay-----/
                 MySleepMs(DELAY);
                 //-----Delay-----/
+
 
 		pid_result=waitpid(pid,&pid_status,WNOHANG);
 		std::cout<<"This loop is running with current count: "<<count<<"\n";
 		std::cout<<"Status of Child: "<< pid_status;
 		std::cout<<"Return value of WAITPID:"<<pid_result;
+
+//---------------------------------------------------------------
+//			Reading states and time after running
 
 		m->getAllCounterStates(sstate2, sktstate2, cstates2);
 		AfterTime = m->getTickCount();
@@ -876,13 +882,13 @@ pid_status = -100; //To re-initialize value for the next application/
 
 		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
 		myfile <<","<<mbw<< "\n";
-	}
+		}
 
-pid_status=-100;
+		pid_status=-100;	//To re-initialize value for the next application/
 //---------------------------------------------------------------
 //						Closing report
 
-	myfile.close();
+		myfile.close();
 //						Clear DRAM
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //-----------------------------------------------------------------
@@ -906,35 +912,28 @@ pid_status=-100;
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 // system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh");
 
-	 //pid_t pid,pid_result;
-         pid= fork();
-         if (pid==0)
-         {
-         cout<<"This is child process";
+		 pid= fork();
+		 if (pid==0)
+		 {
+		 cout<<"This is child process";
 
-	 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh", NULL);
-	 //Activate this for running on VM/
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh", NULL);
-         
-	 //Activate this for running on Server Machine/
-         execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh", NULL);
+		 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh", NULL);
+		 //Activate this for running on VM/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh", NULL);
+		 
+		 //Activate this for running on Server Machine/
+		 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/terasort/hadoop/run.sh", NULL);
 
-         _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
+		 _exit(1);
+		 }
+		 else if (pid > 0)
+		 {
+		 }
 
-//---------------------------------------------------------------
-//                                              Reading states and time after running
-	for(count=0; pid_status<0 ; count++) {
+
+		for(count=0; pid_status<0 ; count++) {
 	
-
+//---------------------------------------------------------------
 //                     Reading states and time befor running
 		m->getAllCounterStates(sstate1, sktstate1, cstates1);
 	    	BeforeTime = m->getTickCount();
@@ -946,6 +945,9 @@ pid_status=-100;
 	        MySystem(sysCmd, sysArgv);
 		}
 
+//---------------------------------------------------------------
+//			1000 ms Delay
+
 		//-----Delay-----/
                 MySleepMs(DELAY);
                 //-----Delay-----/
@@ -954,6 +956,9 @@ pid_status=-100;
 	        std::cout<<"This loop is running with current count: "<<count<<"\n";
         	std::cout<<"Status of Child: "<< pid_status;
 	        std::cout<<"Return value of WAITPID:"<<pid_result;
+
+//---------------------------------------------------------------
+//                     Reading states and time after running
 
 		m->getAllCounterStates(sstate2, sktstate2, cstates2);
 		AfterTime = m->getTickCount();
@@ -983,13 +988,13 @@ pid_status=-100;
 		myfile <<","<<mbw<< "\n";
 
 
-	}
+		}
 
-pid_status=-100;
+		pid_status=-100;	//To re-initialize value for the next application/
 //---------------------------------------------------------------
 //						Closing report
 
-	myfile.close();
+		myfile.close();
 //						Clear DRAM
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //-----------------------------------------------------------------
@@ -1013,34 +1018,28 @@ pid_status=-100;
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 // system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh");
 
-	 //pid_t pid,pid_result;
-         pid= fork();
-         if (pid==0)
-         {
-         cout<<"This is child process";
+		 pid= fork();
+		 if (pid==0)
+		 {
+		 cout<<"This is child process";
 
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh", NULL);
-	 //Activate this for running on VM/
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh", NULL);
-         
-	 //Activate this for running on Server Machine/
-         execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh", NULL);
+		 //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh", NULL);
+		 //Activate this for running on VM/
+		 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh", NULL);
+		 
+		 //Activate this for running on Server Machine/
+		 execl("/bin/su", "root", "-c","/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/terasort/spark/run.sh", NULL);
 
-         _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
+		 _exit(1);
+		 }
+		 else if (pid > 0)
+		 {
+		 }
+
+
+	for(count=0; pid_status<0 ; count++) {
 
 //---------------------------------------------------------------
-//                                              Reading states and time after running
-	for(count=0; pid_status<0 ; count++) {
-	
 //                     Reading states and time befor running
 		m->getAllCounterStates(sstate1, sktstate1, cstates1);
 	    	BeforeTime = m->getTickCount();
@@ -1051,6 +1050,8 @@ pid_status=-100;
 		{
 	        MySystem(sysCmd, sysArgv);
 		}
+//---------------------------------------------------------------
+//			1000 ms Delay
 
        		//-----Delay-----/
                 MySleepMs(DELAY);
@@ -1061,6 +1062,8 @@ pid_status=-100;
 	        std::cout<<"Status of Child: "<< pid_status;
 	        std::cout<<"Return value of WAITPID:"<<pid_result;
 
+//---------------------------------------------------------------
+//                     Reading states and time after running
 		m->getAllCounterStates(sstate2, sktstate2, cstates2);
 		AfterTime = m->getTickCount();
 		for(uint32 i=0; i<m->getNumSockets(); ++i)
@@ -1087,19 +1090,20 @@ pid_status=-100;
 
 		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
 		myfile <<","<<mbw<< "\n";
-	}
-pid_status = -100;
+		}
+
+		pid_status = -100;	//To re-initialize value for the next application/
 //---------------------------------------------------------------
 //						Closing report
 
-	myfile.close();
+		myfile.close();
 //						Clear DRAM
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
 
-*
+/*
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: sleep 
@@ -1111,14 +1115,14 @@ pid_status = -100;
 		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
 //---------------------------------------------------------------
 //                     Reading states and time befor running
-    m->getAllCounterStates(sstate1, sktstate1, cstates1);
-    BeforeTime = m->getTickCount();
- for(uint32 i=0; i<m->getNumSockets(); ++i)
-        BeforeState[i] = m->getServerUncorePowerState(i); 
+	    	m->getAllCounterStates(sstate1, sktstate1, cstates1);
+	    	BeforeTime = m->getTickCount();
+	 	for(uint32 i=0; i<m->getNumSockets(); ++i)
+		BeforeState[i] = m->getServerUncorePowerState(i); 
 
-	 if (sysCmd != NULL)
-		 {
-        MySystem(sysCmd, sysArgv);
+		if (sysCmd != NULL)
+		{
+		MySystem(sysCmd, sysArgv);
 		}	
 //----------------------------------------------------------------
 //						Call the program
