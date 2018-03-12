@@ -37,6 +37,14 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 
 #include "winpmem.h"
 
+#ifdef PCM_EXPORTS
+#define PCM_API __declspec(dllexport)
+#else
+#define PCM_API 
+#endif
+
+extern PCM_API void restrictDriverAccess(LPCWSTR path);
+
 // Roman Dementiev (Intel): added function to read 32-bit word from physical memory
 unsigned int WinPmem::read32(__int64 start)
 {
@@ -175,6 +183,8 @@ int WinPmem::install_driver(bool delete_driver) {
  service_error:
   CloseServiceHandle(service);
   CloseServiceHandle(scm);
+
+  if(status == 1) restrictDriverAccess(TEXT("\\\\.\\") TEXT(PMEM_DEVICE_NAME));
   if(delete_driver) DeleteFile(driver_filename);
 
  error:

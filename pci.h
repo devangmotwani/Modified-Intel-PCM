@@ -28,7 +28,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #ifdef _MSC_VER
 #include "windows.h"
 #else
-#include <unistd.h> 
+#include <unistd.h>
 #endif
 
 #ifdef __APPLE__
@@ -36,8 +36,6 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
 #endif
 
 #include <vector>
-
-#define PCM_USE_PCI_MM_LINUX
 
 class PciHandle
 {
@@ -54,9 +52,9 @@ class PciHandle
     DWORD pciAddress;
 #endif
 
-    PciHandle();            // forbidden
-    PciHandle(const PciHandle &); // forbidden
-    PciHandle& operator = (const PciHandle &); // forbidden
+    PciHandle();                                // forbidden
+    PciHandle(const PciHandle &);               // forbidden
+    PciHandle & operator = (const PciHandle &); // forbidden
 
 public:
     PciHandle(uint32 groupnr_, uint32 bus_, uint32 device_, uint32 function_);
@@ -72,12 +70,12 @@ public:
 };
 
 #ifdef _MSC_VER
-typedef PciHandle PciHandleM;
+typedef PciHandle PciHandleType;
 #elif __APPLE__
 // This may need to change if it can be implemented for OSX
-typedef PciHandle PciHandleM;
-#elif __FreeBSD__
-typedef PciHandle PciHandleM;
+typedef PciHandle PciHandleType;
+#elif defined(__FreeBSD__) || defined(__DragonFly__)
+typedef PciHandle PciHandleType;
 #else
 
 // read/write PCI config space using physical memory
@@ -122,7 +120,7 @@ class PciHandleMM
     uint32 device;
     uint32 function;
     uint64 base_addr;
-    
+
 #ifdef __linux__
     static MCFGHeader mcfgHeader;
     static std::vector<MCFGRecord> mcfgRecords;
@@ -143,14 +141,16 @@ public:
     int32 read64(uint64 offset, uint64 * value);
 
     virtual ~PciHandleMM();
-    
-#ifdef __linux__    
+
+#ifdef __linux__
     static const std::vector<MCFGRecord> & getMCFGRecords();
 #endif
 };
 
 #ifdef PCM_USE_PCI_MM_LINUX
-#define PciHandleM PciHandleMM
+#define PciHandleType PciHandleMM
+#else
+#define PciHandleType PciHandle
 #endif
 
 #endif //  _MSC_VER

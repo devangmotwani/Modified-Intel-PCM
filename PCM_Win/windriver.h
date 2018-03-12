@@ -25,6 +25,7 @@ THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND 
         \brief Loading and unloading custom Windows MSR (Model Specific Register) Driver
 */
 
+extern void restrictDriverAccess(LPCWSTR path);
 
 /*! \brief Manage custom Windows MSR (Model Specific Register) Driver
     The driver is required to access hardware Model Specific Registers (MSRs)
@@ -62,6 +63,7 @@ public:
             {
                 if (0 != StartService(hService, 0, NULL))
                 {
+                    restrictDriverAccess(L"\\\\.\\PCM Test MSR");
                     return true;
                 }
                 DWORD err = GetLastError();
@@ -163,6 +165,5 @@ public:
         }
     }
 };
-
 
 #endif

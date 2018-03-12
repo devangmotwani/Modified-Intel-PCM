@@ -3,9 +3,11 @@
 # written by Roman Dementiev and Jim Harris
 #
 
-EXE = pcm-numa.x pcm-power.x pcm.x pcm-sensor.x pcm-msr.x pcm-memory.x pcm-tsx.x pcm-pcie.x pcm-core.x
+EXE = pcm.x pcm-numa.x pcm-power.x pcm-sensor.x pcm-msr.x pcm-memory.x pcm-tsx.x pcm-pcie.x pcm-core.x pcm-iio.x pcm-lspci.x
 
 all: $(EXE)
+
+lib: libPCM.a
 
 klocwork: $(EXE)
 
@@ -13,23 +15,27 @@ CXXFLAGS += -Wall -g -O3 -Wno-unknown-pragmas
 
 # rely on Linux perf support (user needs CAP_SYS_ADMIN privileges), comment out to disable
 ifneq ($(wildcard /usr/include/linux/perf_event.h),)
-
+CXXFLAGS += -DPCM_USE_PERF
 endif
 
 UNAME:=$(shell uname)
 
 ifeq ($(UNAME), Linux)
 LIB= -pthread -lrt
-CXXFLAGS += -std=c++0x
+CXXFLAGS += -std=c++11
+endif
+ifeq ($(UNAME), DragonFly)
+LIB= -pthread -lrt
+CXXFLAGS += -std=c++11
 endif
 ifeq ($(UNAME), Darwin)
-LIB= -lpthread /usr/lib/libPcmMsr.dylib 
-CXXFLAGS += -I/usr/include -IMacMSRDriver -std=c++0x
+LIB= -lpthread MacMSRDriver/build/Release/libPcmMsr.dylib 
+CXXFLAGS += -I/usr/include -IMacMSRDriver -std=c++11
 endif
 ifeq ($(UNAME), FreeBSD)
 CXX=c++
 LIB= -lpthread -lc++
-CXXFLAGS += -std=c++0x
+CXXFLAGS += -std=c++11
 endif
 
 COMMON_OBJS = msr.o cpucounters.o pci.o client_bw.o utils.o
@@ -40,6 +46,9 @@ OBJS = $(COMMON_OBJS) $(EXE_OBJS)
 .PRECIOUS: $(OBJS)
 
 -include $(OBJS:.o=.d)
+libPCM.a: $(OBJS)
+	ar -rcs $@ $^
+
 %.x: %.o $(COMMON_OBJS)
 	$(CXX) -o $@ $^ $(LIB)
 
