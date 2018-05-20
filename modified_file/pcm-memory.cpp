@@ -461,7 +461,7 @@ int main(int argc, char * argv[])
 			system("cpupower frequency-set -f 1200000");
 		}
 
-/*		
+		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: wordcount 
@@ -474,7 +474,7 @@ int main(int argc, char * argv[])
 //----------------------------------------------------------------
 //						Call the program
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
+/*Edit by Devang*/
          pid= fork();
          if (pid==0)
          {
@@ -483,10 +483,10 @@ int main(int argc, char * argv[])
          //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
 	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
 
-         //Activate this for running on VM/
+         /*Activate this for running on VM*/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
 	 
-	 //Activate this for running on Server Machine/
+	 /*Activate this for running on Server Machine*/
 	 execl("/home/hosein/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh","run.sh", NULL);
 	 _exit(1);
          }
@@ -515,9 +515,9 @@ int main(int argc, char * argv[])
         		MySystem(sysCmd, sysArgv);
 		}
 
-		//-----Delay-----/
+		/*-----Delay-----*/
 		MySleepMs(DELAY);
-		//-----Delay-----/
+		/*-----Delay-----*/
 
 	
 		pid_result=waitpid(pid,&pid_status,WNOHANG);
@@ -556,7 +556,7 @@ int main(int argc, char * argv[])
 
 	}
 	std::cout<<"Application_count --> Hadoop:Wordcount --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
+	pid_status = -100; /*To re-initialize value for the next application*/
 
 //---------------------------------------------------------------
 //						Closing report
@@ -570,6 +570,7 @@ int main(int argc, char * argv[])
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
 
+//----------Commenting starts
 		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -675,8 +676,8 @@ int main(int argc, char * argv[])
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*		
+
+		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: sort 
@@ -782,9 +783,9 @@ int main(int argc, char * argv[])
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
 
-/*		
+
+		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:spark  Application: sort 
@@ -888,8 +889,8 @@ int main(int argc, char * argv[])
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*		
+
+		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: terasort 
@@ -1103,7 +1104,7 @@ int main(int argc, char * argv[])
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+
 /*
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -1300,7 +1301,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
 */
-/*
+
 	
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -1315,7 +1316,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //						Call the program
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 
-//Edit by Devang/
+/*Edit by Devang*/
          //pid_t pid,pid_result;
          pid= fork();
          if (pid==0)
@@ -1325,10 +1326,10 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
          //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
           //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
 
-         //Activate this for running on VM/
+         /*Activate this for running on VM*/
          //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/ml/bayes/hadoop/run.sh", NULL);
 
-         //Activate this for running on Server Machine/
+         /*Activate this for running on Server Machine*/
          execl("/home/hosein/project/HiBench-master/bin/workloads/ml/bayes/hadoop/run.sh","run.sh", NULL);
          
 	 _exit(1);
@@ -1358,9 +1359,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
                         MySystem(sysCmd, sysArgv);
                 }
 
-                //-----Delay-----/
+                /*-----Delay-----*/
                 MySleepMs(DELAY);
-                //-----Delay-----/
+                /*-----Delay-----*/
 
 
                 pid_result=waitpid(pid,&pid_status,WNOHANG);
@@ -1400,7 +1401,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 	}
 
 	std::cout<<"Application_count --> Hadoop:Bayes --> "<<count<<"\n";
-        pid_status = -100; //To re-initialize value for the next application/
+        pid_status = -100; /*To re-initialize value for the next application*/
 
 //---------------------------------------------------------------
 //						Closing report
@@ -1411,7 +1412,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+
 /*
 		
 //-----------------------------------------------------------------
@@ -1479,7 +1480,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 /-----older comment 2
 */
 
-/*		
+		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: kmeans 
@@ -1692,9 +1693,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
 
-/*	
+
+	
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: pagerank 
@@ -1907,9 +1908,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
 
-/*
+
+
 		
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
@@ -1932,10 +1933,10 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
          //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
           //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
 
-         //Activate this for running on VM/
+         /*Activate this for running on VM*/
          //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/sql/aggregation/hadoop/run.sh", NULL);
 
-         //Activate this for running on Server Machine/
+         /*Activate this for running on Server Machine*/
          execl("/home/hosein/project/HiBench-master/bin/workloads/sql/aggregation/hadoop/run.sh","run.sh", NULL);
          
 	 _exit(1);
@@ -1966,9 +1967,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
                         MySystem(sysCmd, sysArgv);
                 }
 
-                //-----Delay-----/
+                /*-----Delay-----*/
                 MySleepMs(DELAY);
-                //-----Delay-----/
+                /*-----Delay-----*/
 
 
                 pid_result=waitpid(pid,&pid_status,WNOHANG);
@@ -2008,7 +2009,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 	}
 
 	std::cout<<"Application_count --> Hadoop:Aggregation --> "<<count<<"\n";
-        pid_status = -100; //To re-initialize value for the next application//
+        pid_status = -100; /*To re-initialize value for the next application*/
 //---------------------------------------------------------------
 //						Closing report
 
@@ -2034,7 +2035,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //						Call the program
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 
-//Edit by Devang/
+/*Edit by Devang*/
          //pid_t pid,pid_result;
          pid= fork();
          if (pid==0)
@@ -2044,10 +2045,10 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
          //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
           //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
 
-         //Activate this for running on VM/
+         /*Activate this for running on VM*/
          //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/sql/join/hadoop/run.sh", NULL);
 
-         //Activate this for running on Server Machine/
+         /*Activate this for running on Server Machine*/
          execl("/home/hosein/project/HiBench-master/bin/workloads/sql/join/hadoop/run.sh","run.sh", NULL);
          
 	 _exit(1);
@@ -2079,9 +2080,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
                         MySystem(sysCmd, sysArgv);
                 }
 
-                //-----Delay-----/
+                /*-----Delay-----*/
                 MySleepMs(DELAY);
-                //-----Delay-----/
+                /*-----Delay-----*/
 
 
                 pid_result=waitpid(pid,&pid_status,WNOHANG);
@@ -2117,7 +2118,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 		myfile <<","<<mbw<< "\n";
 	}
 	std::cout<<"Application_count --> Hadoop:Join --> "<<count<<"\n";
-        pid_status = -100; //To re-initialize value for the next application/
+        pid_status = -100; /*To re-initialize value for the next application*/
 //---------------------------------------------------------------
 //						Closing report
 
@@ -2142,7 +2143,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //						Call the program
 //system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
 
-//Edit by Devang/
+/*Edit by Devang*/
          //pid_t pid,pid_result;
          pid= fork();
          if (pid==0)
@@ -2152,10 +2153,10 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
          //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
           //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
 
-         //Activate this for running on VM/
+         /*Activate this for running on VM*/
          //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/sql/scan/hadoop/run.sh", NULL);
 
-         //Activate this for running on Server Machine/
+         /*Activate this for running on Server Machine*/
          execl("/home/hosein/project/HiBench-master/bin/workloads/sql/scan/hadoop/run.sh","run.sh", NULL);
          _exit(1);
          }
@@ -2184,9 +2185,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
                         MySystem(sysCmd, sysArgv);
                 }
 
-                //-----Delay-----/
+                /*-----Delay-----*/
                 MySleepMs(DELAY);
-                //-----Delay-----/
+                /*-----Delay-----*/
 
 
                 pid_result=waitpid(pid,&pid_status,WNOHANG);
@@ -2225,7 +2226,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 		myfile <<","<<mbw<< "\n";
 	}
 	std::cout<<"Application_count --> Hadoop:Scan --> "<<count<<"\n";
-        pid_status = -100; //To re-initialize value for the next application/
+        pid_status = -100; /*To re-initialize value for the next application*/
 //---------------------------------------------------------------
 //						Closing report
 
@@ -2236,2027 +2237,6 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
 //------older comment 3
-*/
-/*
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework:Flink  Application: wordcount  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-		cout<<"Cleared DRAM";
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-	 cout<<"Line before the fork";
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/MicroBenchmarks/run/flink-wordcount.sh","flink-wordcount.sh" ,NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "wordcount," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:Wordcount :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework:Spark  Application: wordcount  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/MicroBenchmarks/run/spark-wordcount.sh","spark-wordcount.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "wordcount," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:Wordcount :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework:Hadoop  Application: wordcount  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-wordcount.sh","hadoop-wordcount.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "wordcount," << "hadoop," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Hadoop:Wordcount :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-/*
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework:Flink Application: grep  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/MicroBenchmarks/run/flink-grep.sh","flink-grep.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "grep," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:Grep  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Spark  Application: grep  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/MicroBenchmarks/run/spark-grep.sh","spark-grep.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "grep," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:Grep  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Hadoop  Application: grep  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-grep.sh","hadoop-grep.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "grep," << "hadoop," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Hadoop:Grep  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-/*
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Flink  Application: Pagerank  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/SearchEngine/Pagerank/run/Pagerank.sh","Pagerank.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "pagerank," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:Pagerank  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Spark  Application: Pagerank  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/SearchEngine/Pagerank/run/run_Pagerank.sh","run_Pagerank.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "pagerank," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:Pagerank  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Hadoop  Application: Pagerank  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/SearchEngine/PageRank/modify_run_Pagerank.sh","modify_run_Pagerank.sh 22", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "pagerank," << "hadoop," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Hadoop:Pagerank  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Flink  Application: Kmeans  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/SNS/Kmeans/run/Kmeans.sh","Kmeans.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "kmeans," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:Kmeans  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Spark  Application: Kmeans  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/SNS/Kmeans/run/Kmeans.sh","Kmeans.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "kmeans," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:Kmeans  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Flink  Application: BFS  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench-Graph/Flink-Gelly/run_bfs.sh","run_bfs.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "bfs," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:BFS  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Flink  Application: CC  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench-Graph/Flink-Gelly/run_cc.sh","run_cc.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "cc," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:CC  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Flink  Application: NaiveBayes  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/E-commerce/naivebayes/run_naivebayes.sh","run_naivebayes.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "naivebayes," << "flink," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Flink:Naivebayes  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Spark  Application: NaiveBayes  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/E-commerce/run_naivebayes.sh","run_naivebayes.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "naivebayes," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:Naivebayes  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Hadoop  Application: NaiveBayes  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/E-commerce/run_naivebayes.sh","run_naivebayes.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "naivebayes," << "hadoop," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Hadoop:Naivebayes  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-/*
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Spark  Application: BFS  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench-Graph/Spark-Graphx/run_bfs.sh","run_bfs.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "bfs," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:BFS  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-
-
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------
-//					Framework: Spark  Application: CC  Benchmark:BigDataBench 
-//-----------------------------------------------------------------
-//-----------------------------------------------------------------	
-//						Open report
-		myfile.open("hibench.csv",fstream::app);
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-//----------------------------------------------------------------
-//						Call the program
-//system("/usr/local/hadoop/bin/hadoop  jar /usr/local/hadoop/share/hadoop/mapreduce/hadoop-mapreduce-examples-2.7.0.jar wordcount randtext28g hwcout");
-//Edit by Devang/
-         pid= fork();
-         if (pid==0)
-         {
-	 cout<<"This is child process";
-	 //execl("/bin/su", "hoseinmmm", "-c", "ssh dev@192.168.56.102 -i /home/hoseinmmm/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-         //execl("/usr/bin/ssh", "ssh","dev@192.168.56.102","/home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	  //execl("/bin/su hduser -c  \"ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh\" ", "run.sh",NULL); 
-
-         //Activate this for running on VM/
-	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
-	 //Activate this for running on Server Machine/
-	 execl("/home/hosein/Flink/BigDataBench-Graph/Spark-Graphx/run_cc.sh","run_cc.sh", NULL);
-	 _exit(1);
-         }
-         else if (pid > 0)
-         {
-         //int status=300;
-         //std::cout<<"Status_before: "<<status<<"\n";
-         //waitpid(pid,&status,0);
-         //std::cout<<"Status_after: "<<status<<"\n";
-         //std::cout<<"Process: "<<getpid()<<" with child "<<pid<<"\n";
-         }
-	 
-//	 system("/home/hoseinmmm/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh");
-
-	for(count=0; pid_status<0 ; count++) {
-	
-//---------------------------------------------------------------
-//                     Reading states and time befor running
-    		m->getAllCounterStates(sstate1, sktstate1, cstates1);
-	    	BeforeTime = m->getTickCount();
- 		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	        BeforeState[i] = m->getServerUncorePowerState(i); 
-
-		if (sysCmd != NULL)
-		{
-        		MySystem(sysCmd, sysArgv);
-		}
-
-		//-----Delay-----/
-		MySleepMs(DELAY);
-		//-----Delay-----/
-
-	
-		pid_result=waitpid(pid,&pid_status,WNOHANG);
-		std::cout<<"This loop is running with current count: "<<count<<"\n";
-		std::cout<<"Status of Child: "<< pid_status;
-		std::cout<<"Return value of WAITPID:"<<pid_result;
-
-//---------------------------------------------------------------
-//                     Reading states and time after running	
-		m->getAllCounterStates(sstate2, sktstate2, cstates2);
-		AfterTime = m->getTickCount();
-		for(uint32 i=0; i<m->getNumSockets(); ++i)
-	            AfterState[i] = m->getServerUncorePowerState(i);
-//---------------------------------------------------------------
-//						Remove output file	
-		//system("/usr/local/hadoop/bin/hdfs dfs -rmr -skipTrash  hwcout");
-//---------------------------------------------------------------
-//					Writing information to report
-		myfile << "cc," << "spark," << "bigdatabench,"<< memcap<<","<<memfrq<<","<<memch;
-		if(fr==0){
-			myfile <<",2.1";}
-		else if(fr==1){
-			myfile <<",1.9";}			
-		else{
-			myfile <<",1.2";}
-		myfile << "," << numcore << "," << insize;			
-		myfile << ","<<(double(AfterTime-BeforeTime)/1000)<<","<<getCoreIPC(sstate1, sstate2)<<","<<getL3CacheHitRatio(sstate1, sstate2)<<","<<getL2CacheHitRatio(sstate1, sstate2);
-		myfile << ","<<(getCoreCStateResidency(0, sstate1, sstate2)*100.)<<","<<getConsumedJoules(sktstate1[0], sktstate2[0])<<","<<getDRAMConsumedJoules(sktstate1[0], sktstate2[0]);
-		myfile << ","<< (((getConsumedJoules(sktstate1[0], sktstate2[0]))+(getDRAMConsumedJoules(sktstate1[0], sktstate2[0])))*(double(AfterTime-BeforeTime)/(1000*1000)));
-		myfile << ","<<((getConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-		myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(AfterTime-BeforeTime)/1000));
-//                                   pcm-memory to calculate BW
-
-		mbw = calculate_bandwidth(m,BeforeState,AfterState,AfterTime-BeforeTime,csv,csvheader, no_columns);
-		myfile <<","<<mbw<< "\n";
-
-	}
-	std::cout<<"Application_count --> Spark:CC  :: BigDataBench --> "<<count<<"\n";
-	pid_status = -100; //To re-initialize value for the next application/
-
-//---------------------------------------------------------------
-//						Closing report
-
-	myfile.close();
-//						Clear DRAM
-		system("sync && echo 3 | sudo tee /proc/sys/vm/drop_caches");
-
-
-//-----------------------------------------------------------------
-///////////////////////////////////////////////////////////////////
-//-----------------------------------------------------------------	
-*/
-
-
 
 if (true)
     {
