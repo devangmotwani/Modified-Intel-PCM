@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 *.o
 *.x
 *.d
@@ -26,3 +27,23 @@ Release64
 .metadata/
 html/
 latex/
+=======
+*.o
+*.x
+*.d
+*.xml
+/.project
+*.XML
+*.htm
+*.html
+*.dll
+*.txt
+*.patch
+*.orig
+*.out
+*.log
+*.sys
+*.vxd
+*.exe
+*.tgz
+>>>>>>> 68d174e3e7ab03ade46ba0e43c911105fba1dc02
