@@ -40,6 +40,92 @@
 #define VM_ADDRESS dev@192.168.56.102
 #define DELAY 1000
 
+//--------------------------------------------
+/*Select Environment for running experiments*/
+// Env-type		ENV_SELECT	ENV
+// HOST MACHINE		--> 1 	 	--> HOST
+// VIRTUAL MACHINE 	--> 2  		--> VM
+// DOCKER 		--> 3 	 	--> DOCKER
+
+#define ENV_SELECT 1
+
+#if ENV_SELECT==3
+#define ENV DOCKER
+
+#elif ENV_SELECT==2
+#define ENV VM
+
+#else
+#define ENV HOST  
+#endif /*If to select the Environment: By default it will set as HOST*/
+
+//--------------------------------------------
+
+
+/*Control variables to activate/deactivate different Benchmarks of BIGDATABENCH*/
+#define HADOOP 1
+#define SPARK 1
+#define FLINK 1
+
+#if HADOOP
+
+#define HADOOP_WORDCOUNT 1
+#define HADOOP_GREP 1
+#define HADOOP_PAGERANK 1
+#define HADOOP_NAIVEBAYES 0
+/*HADOOP_NAVEBAYES has issue running so it cannot be automated. Need to run it manually*/
+
+#else
+
+#define HADOOP_WORDCOUNT 0
+#define HADOOP_GREP 0
+#define HADOOP_PAGERANK 0
+#define HADOOP_NAIVEBAYES 0
+#endif
+
+
+#if SPARK
+
+#define SPARK_WORDCOUNT 1
+#define SPARK_GREP 1
+#define SPARK_PAGERANK 1
+#define SPARK_KMEANS 1
+#define SPARK_BFS 1
+#define SPARK_CC 1
+#define SPARK_NAIVEBAYES 1
+#else
+
+#define SPARK_WORDCOUNT 0
+#define SPARK_GREP 0
+#define SPARK_PAGERANK 0
+#define SPARK_KMEANS 0
+#define SPARK_BFS 0
+#define SPARK_CC 0
+#define SPARK_NAIVEBAYES 0
+#endif
+
+#if FLINK
+#define FLINK_WORDCOUNT 1
+#define FLINK_GREP 1
+#define FLINK_PAGERANK 1
+#define FLINK_KMEANS 1
+#define FLINK_BFS 1
+#define FLINK_CC 1
+#define FLINK_NAIVEBAYES 1
+#else
+
+#define FLINK_WORDCOUNT 0
+#define FLINK_GREP 0
+#define FLINK_PAGERANK 0
+#define FLINK_KMEANS 0
+#define FLINK_BFS 0
+#define FLINK_CC 0
+#define FLINK_NAIVEBAYES 0
+#endif
+/*End of Control Variables for BIGDATABENCH*/
+
+/*Edit by Devang--*/
+
 #define SIZE (10000000)
 #define PCM_DELAY_DEFAULT 1.0 // in seconds
 #define PCM_DELAY_MIN 0.015 // 15 milliseconds is practical on most modern CPUs
@@ -2237,7 +2323,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------	
 //------older comment 3
 */
-/*
+
+#if FLINK_WORDCOUNT
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Flink  Application: wordcount  Benchmark:BigDataBench 
@@ -2264,8 +2351,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
 	 
+#if ENV==HOST 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/MicroBenchmarks/run/flink-wordcount.sh","flink-wordcount.sh" ,NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -2347,8 +2442,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if SPARK_WORDCOUNT
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Spark  Application: wordcount  Benchmark:BigDataBench 
@@ -2372,9 +2468,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/MicroBenchmarks/run/spark-wordcount.sh","spark-wordcount.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -2456,8 +2559,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if HADOOP_WORDCOUNT
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Hadoop  Application: wordcount  Benchmark:BigDataBench 
@@ -2481,9 +2585,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-wordcount.sh","hadoop-wordcount.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif 
 	 _exit(1);
          }
          else if (pid > 0)
@@ -2565,12 +2676,14 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+#endif
 
+
+#if FLINK_GREP
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-/*
+
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework:Flink Application: grep  Benchmark:BigDataBench 
@@ -2594,9 +2707,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/MicroBenchmarks/run/flink-grep.sh","flink-grep.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -2678,8 +2798,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if SPARK_GREP
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -2707,9 +2828,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/MicroBenchmarks/run/spark-grep.sh","spark-grep.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -2791,9 +2919,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+#endif
 
-/*
+#if HADOOP_GREP
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -2821,9 +2949,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-grep.sh","hadoop-grep.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -2905,12 +3040,13 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+#endif
 
+#if FLINK_PAGERANK
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-/*
+
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework: Flink  Application: Pagerank  Benchmark:BigDataBench 
@@ -2934,10 +3070,17 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/SearchEngine/Pagerank/run/Pagerank.sh","Pagerank.sh", NULL);
-	 _exit(1);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
+	  _exit(1);
          }
          else if (pid > 0)
          {
@@ -3018,9 +3161,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+#endif
 
-/*
+#if SPARK_PAGERANK
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3048,9 +3191,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/SearchEngine/Pagerank/run/run_Pagerank.sh","run_Pagerank.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3132,8 +3282,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if HADOOP_PAGERANK
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3161,10 +3312,17 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST 	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/SearchEngine/PageRank/modify_run_Pagerank.sh","modify_run_Pagerank.sh 22", NULL);
-	 _exit(1);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
+	  _exit(1);
          }
          else if (pid > 0)
          {
@@ -3245,8 +3403,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if FLINK_KMEANS
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3274,9 +3433,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/SNS/Kmeans/run/Kmeans.sh","Kmeans.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3358,8 +3524,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if SPARK_KMEANS
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3387,9 +3554,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/SNS/Kmeans/run/Kmeans.sh","Kmeans.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif 
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3471,8 +3645,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if FLINK_BFS
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3500,9 +3675,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench-Graph/Flink-Gelly/run_bfs.sh","run_bfs.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3584,8 +3766,10 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
+#endif
 
 
+#if FLINK_CC
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3613,9 +3797,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench-Graph/Flink-Gelly/run_cc.sh","run_cc.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3697,8 +3888,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+#endif
 
+#if FLINK_NAIVEBAYES
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3726,9 +3918,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2_Flink/E-commerce/naivebayes/run_naivebayes.sh","run_naivebayes.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3810,8 +4009,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
+#endif
 
-/*
+#if SPARK_NAIVEBAYES
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3839,9 +4039,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.5_Spark/E-commerce/run_naivebayes.sh","run_naivebayes.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -3923,8 +4130,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+#endif
+
+#if HADOOP_NAIVEBAYES
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
@@ -3952,9 +4160,16 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/E-commerce/run_naivebayes.sh","run_naivebayes.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
 	 _exit(1);
          }
          else if (pid > 0)
@@ -4036,8 +4251,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
-/*
+
+#if SPARK_BFS
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework: Spark  Application: BFS  Benchmark:BigDataBench 
@@ -4061,9 +4276,17 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench-Graph/Spark-Graphx/run_bfs.sh","run_bfs.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
+
 	 _exit(1);
          }
          else if (pid > 0)
@@ -4145,8 +4368,9 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
+#endif
 
-
+#if SPARK_CC
 //-----------------------------------------------------------------
 //-----------------------------------------------------------------
 //					Framework: Spark  Application: CC  Benchmark:BigDataBench 
@@ -4170,9 +4394,17 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 
          //Activate this for running on VM/
 	 //execl( "/bin/su", "hduser", "-c", "ssh hduser@192.168.56.101 -i /home/hduser/.ssh/id_rsa /home/dev/project/HiBench-master/bin/workloads/micro/wordcount/hadoop/run.sh", NULL);
-	 
+#if ENV==HOST	 
 	 //Activate this for running on Server Machine/
 	 execl("/home/hosein/Flink/BigDataBench-Graph/Spark-Graphx/run_cc.sh","run_cc.sh", NULL);
+#endif
+
+#if ENV==VM
+#endif
+
+#if ENV==DOCKER
+#endif
+
 	 _exit(1);
          }
          else if (pid > 0)
@@ -4254,7 +4486,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
-*/
+#endif
 
 
 
