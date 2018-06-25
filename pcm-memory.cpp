@@ -38,7 +38,7 @@
 #include<sys/types.h>
 
 #define VM_ADDRESS hduser@192.168.56.101
-#define DELAY 1000
+#define DELAY 1000	//Delay of 1000 ms while running experiments
 
 //--------------------------------------------
 /*Select Environment for running experiments*/
@@ -51,30 +51,25 @@
 #define VM 2
 #define DOCKER 3
 
-#define ENV HOST 
+#define ENV VM		// 
 /*
-#if ENV_SELECT==3
-#define ENV DOCKER
-
-#elif ENV_SELECT==2
-#define ENV VM
-
-#else
-#define ENV HOST  
-#endif */ /*If to select the Environment: By default it will set as HOST*/
+ENV HOST   ---> will select HOST while running the experiments
+ENV VM     ---> will select VM while running the experiments
+ENV DOCKER ---> will select DOCKER while running the experiments
+*/ /*If to select the Environment: By default it will set as HOST*/
 
 //--------------------------------------------
 
 
 /*Control variables to activate/deactivate different Benchmarks of BIGDATABENCH*/
 #define HADOOP 1
-#define SPARK 1
-#define FLINK 1
+#define SPARK 0
+#define FLINK 0
 
 #if HADOOP
 
-#define HADOOP_WORDCOUNT 1
-#define HADOOP_GREP 1
+#define HADOOP_WORDCOUNT 0
+#define HADOOP_GREP 0
 #define HADOOP_PAGERANK 1
 #define HADOOP_NAIVEBAYES 0
 /*HADOOP_NAVEBAYES has issue running so it cannot be automated. Need to run it manually*/
@@ -96,7 +91,7 @@
 #define SPARK_KMEANS 1
 #define SPARK_BFS 1
 #define SPARK_CC 1
-#define SPARK_NAIVEBAYES 1
+#define SPARK_NAIVEBAYES 0
 #else
 
 #define SPARK_WORDCOUNT 0
@@ -115,7 +110,7 @@
 #define FLINK_KMEANS 1
 #define FLINK_BFS 1
 #define FLINK_CC 1
-#define FLINK_NAIVEBAYES 1
+#define FLINK_NAIVEBAYES 0
 #else
 
 #define FLINK_WORDCOUNT 0
@@ -2366,6 +2361,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2_Flink/MicroBenchmarks/run/flink-wordcount.sh","flink-wordcount.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -2485,6 +2482,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.5_Spark/MicroBenchmarks/run/spark-wordcount.sh","spark-wordcount.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -2599,10 +2598,13 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==VM
+	 //Activate this for running on VM/
 	 execl("/bin/su", "hosein", "-c", "ssh hduser@192.168.56.101 -i /home/hosein/.ssh/id_rsa /home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-wordcount.sh", NULL);
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-wordcount.sh","hadoop-wordcount.sh",NULL);
 #endif 
 	 _exit(1);
          }
@@ -2727,6 +2729,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2_Flink/MicroBenchmarks/run/flink-grep.sh","flink-grep.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -2850,6 +2854,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Acxtivate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.5_Spark/MicroBenchmarks/run/spark-grep.sh","spark-grep.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -2973,6 +2979,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/MicroBenchmarks/run/hadoop-grep.sh","hadoop-grep.sh",NULL); 
 #endif
 	 _exit(1);
          }
@@ -3096,6 +3104,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2_Flink/SearchEngine/Pagerank/run/Pagerank.sh"," Pagerank.sh",NULL);
 #endif
 	  _exit(1);
          }
@@ -3214,11 +3224,13 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==VM
-	 //Activate this fro running on VM/
+	 //Activate this for running on VM/
 	 execl("/bin/su", "hosein", "-c", "ssh hduser@192.168.56.101 -i /home/hosein/.ssh/id_rsa /home/hosein/Flink/BigDataBench_V3.2.5_Spark/SearchEngine/Pagerank/run/run_Pagerank.sh", NULL);
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.5_Spark/SearchEngine/Pagerank/run/run_Pagerank.sh","run_Pagerank.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -3342,6 +3354,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/SearchEngine/PageRank/modify_run_Pagerank.sh","modify_run_Pagerank.sh 22",NULL);
 #endif
 	  _exit(1);
          }
@@ -3465,6 +3479,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2_Flink/SNS/Kmeans/run/Kmeans.sh","Kmeans.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -3588,6 +3604,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.5_Spark/SNS/Kmeans/run/Kmeans.sh","Kmeans.sh",NULL);
 #endif 
 	 _exit(1);
          }
@@ -3711,6 +3729,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench-Graph/Flink-Gelly/run_bfs.sh","run_bfs.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -3835,6 +3855,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench-Graph/Flink-Gelly/run_cc.sh","run_cc.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -3958,6 +3980,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2_Flink/E-commerce/naivebayes/run_naivebayes.sh","run_naivebayes.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -4081,6 +4105,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.5_Spark/E-commerce/run_naivebayes.sh","run_naivebayes.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -4199,10 +4225,13 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==VM
+	  //Activate this for running on VM/
 	 execl("/bin/su", "hosein", "-c", "ssh hduser@192.168.56.101 -i /home/hosein/.ssh/id_rsa /home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/E-commerce/run_naivebayes.sh",NULL);	
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench_V3.2.1_Hadoop_Hive/E-commerce/run_naivebayes.sh","run_naivebayes.sh",NULL);
 #endif
 	 _exit(1);
          }
@@ -4285,6 +4314,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 //-----------------------------------------------------------------
 ///////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------	
+#endif
+
 
 #if SPARK_BFS
 //-----------------------------------------------------------------
@@ -4321,6 +4352,8 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 //Activate this for running on Docker/
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench-Graph/Spark-Graphx/run_bfs.sh","run_bfs.sh",NULL);
 #endif
 
 	 _exit(1);
@@ -4441,6 +4474,7 @@ myfile << ","<<((getDRAMConsumedJoules(sktstate1[0], sktstate2[0]))/(double(Afte
 #endif
 
 #if ENV==DOCKER
+	 execl("/usr/bin/docker", "docker","container","exec","bigdata","/bin/bash", "/home/hosein/Flink/BigDataBench-Graph/Spark-Graphx/run_cc.sh","run_cc.sh",NULL);
 #endif
 
 	 _exit(1);
